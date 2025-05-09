@@ -25,6 +25,11 @@ jobs:
         cp $GITHUB_WORKSPACE/app/lambda_function.py package/
         cd package && zip -r ../lambda.zip .
 
+    - name: Set up dependencies for AWS CLI
+      run: |
+        pip install --upgrade pip
+        pip install awscli boto3
+
     - name: Deploy to AWS Lambda
       uses: ItsKarma/aws-cli@v1.70.0
       with:
