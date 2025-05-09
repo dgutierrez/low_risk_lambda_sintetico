@@ -30,13 +30,8 @@ jobs:
         pip install --upgrade pip
         pip install awscli boto3
 
-    - name: Deploy to AWS Lambda
-      uses: ItsKarma/aws-cli@v1.70.0
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-        inlineScript: |
-          aws lambda update-function-code \
-            --function-name calculadora_teste_sintetico \
-            --zip-file fileb://lambda.zip
+    - name: Fazer deploy na Lambda
+      run: |
+        aws lambda update-function-code \
+          --function-name calculadora_teste_sintetico \
+          --zip-file fileb://lambda.zip
