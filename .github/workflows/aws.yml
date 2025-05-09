@@ -19,9 +19,10 @@ jobs:
         python-version: 3.11
 
     - name: Install dependencies
+      working-directory: ${{ github.workspace }}
       run: |
-        pip install -r /app/requirements.txt -t package
-        cp /app/lambda_function.py package/
+        pip install -r $GITHUB_WORKSPACE/app/requirements.txt -t package
+        cp $GITHUB_WORKSPACE/app/lambda_function.py package/
         cd package && zip -r ../lambda.zip .
 
     - name: Deploy to AWS Lambda
