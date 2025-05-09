@@ -58,3 +58,13 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   role       = aws_iam_role.lambda_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
+
+/*resource "aws_lambda_function" "lambda_function" {
+  function_name = "calculadora_teste_sintetico"
+  filename      = "lambda.zip"
+  role          = aws_iam_role.lambda_role.arn
+  handler       = "lambda_function.lambda_handler"
+  runtime       = "python3.11"
+  timeout       = 30
+  memory_size   =  128
+}*/
