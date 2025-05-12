@@ -59,12 +59,11 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-/*resource "aws_lambda_function" "lambda_function" {
-  function_name = "calculadora_teste_sintetico"
-  filename      = "lambda.zip"
+resource "aws_lambda_function" "lambda_function" {
+  function_name = "lambda_calculadora_teste_sintetico"
+  image_uri     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.us-east-1.amazonaws.com/lambda_calculadora_teste_sintetico:v1.6"
   role          = aws_iam_role.lambda_role.arn
-  handler       = "lambda_function.lambda_handler"
-  runtime       = "python3.11"
+  package_type  = "Image"
   timeout       = 30
   memory_size   =  128
-}*/
+}
